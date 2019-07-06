@@ -17,7 +17,7 @@
 - transform `gurume list` to json format like below ?? a.k.a `gurume.json`
 - load `gurume.json` on elasticsearch
 
-```json
+```js
 // gurume.json example ?
 [
     {
