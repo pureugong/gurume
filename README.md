@@ -82,7 +82,15 @@ tail gurume-category.txt
 ```
 
 ### extract `gurume list` from gurume.txt
-- TBU
+```sh
+## 식당 카테고리 체크
+grep "^\d*\.\ *" gurume-list.txt
+
+## 식당 이름에 숫자 있는 부분 제거
+
+##
+
+```
 
 ### transform `gurume list` to json format
 - TBU
