@@ -44,7 +44,9 @@ func main() {
 			} else {
 
 				cnt := strings.Count(str, "-")
-				if cnt == 2 || cnt == 3 {
+				if cnt == 0 {
+					fmt.Printf("%s - N/A - N/A - %s\n", category, str)
+				} else if cnt == 2 || cnt == 3 {
 					fmt.Printf("%s - %s\n", category, str)
 				} else {
 					fmt.Printf("exception: %s - %s\n", category, str)

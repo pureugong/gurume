@@ -33,6 +33,11 @@
 
 ## nogada
 
+```s
+## check exception case
+go run main.go gurume.txt | grep -v 'info\|review\|hotel' | grep exception
+
+```
 
 ### transform `gurume list` to json format
 - TBU
