@@ -13,14 +13,15 @@ import (
 const categoryPrefix = "="
 const dataDir = "./data"
 
+var resultFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.txt")
+var fileName string
+
 var formatDataCmd = &cobra.Command{
 	Use:   "formatData",
 	Short: "format data..",
 	Long:  "format data...",
 	Run:   formatDataExecute,
 }
-
-var fileName string
 
 func init() {
 
@@ -37,7 +38,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 
 	// read file
 	fullFilePath := fmt.Sprintf("%s/%s", dataDir, fileName)
-	fmt.Printf(">> read file: %s\n", fullFilePath)
+	fmt.Printf("read file: %s\n", fullFilePath)
 	fp, err = os.Open(fullFilePath)
 	if err != nil {
 		panic(err)
@@ -48,6 +49,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 
 	// process start
 	var category string
+	var gurumeList []string
 	for {
 		// read
 		line, _, err := reader.ReadLine()
@@ -75,7 +77,10 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 					}
 					name := strings.TrimSpace(hotel[1])
 
-					fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
+					// fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
+					gurume := fmt.Sprintf("%s, %s - N/A - N/A - %s", category, subCategory, name)
+					gurumeList = append(gurumeList, gurume)
+
 				} else if strings.Contains(category, "노포 식당") {
 					// town - name - since, town - name - since - note
 					nopo := strings.Split(str, "-")
@@ -84,12 +89,18 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 					since := strings.TrimSpace(nopo[2])
 
 					if len(nopo) == 3 {
-						fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+						// fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+						gurume := fmt.Sprintf("%s - %s - N/A - %s (since %s)", category, town, name, since)
+						gurumeList = append(gurumeList, gurume)
 					} else if len(nopo) == 4 {
 						note := strings.TrimSpace(nopo[3])
-						fmt.Printf("%s - %s - N/A - %s (since %s) - %s\n", category, town, name, since, note)
+						// fmt.Printf("%s - %s - N/A - %s (since %s) - %s\n", category, town, name, since, note)
+						gurume := fmt.Sprintf("%s - %s - N/A - %s (since %s) - %s", category, town, name, since, note)
+						gurumeList = append(gurumeList, gurume)
 					} else {
-						fmt.Printf("exception: %s - %s\n", category, str)
+						// fmt.Printf("exception: %s - %s\n", category, str)
+						gurume := fmt.Sprintf("exception: %s - %s", category, str)
+						gurumeList = append(gurumeList, gurume)
 					}
 
 				} else {
@@ -97,13 +108,19 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 
 					if cnt == 0 {
 						// restraunt only
-						fmt.Printf("%s - N/A - N/A - %s\n", category, str)
+						// fmt.Printf("%s - N/A - N/A - %s\n", category, str)
+						gurume := fmt.Sprintf("%s - N/A - N/A - %s", category, str)
+						gurumeList = append(gurumeList, gurume)
 					} else if cnt == 2 || cnt == 3 {
 						// town - station - restraunt, town - station - restraunt - note case
-						fmt.Printf("%s - %s\n", category, str)
+						// fmt.Printf("%s - %s\n", category, str)
+						gurume := fmt.Sprintf("%s - %s", category, str)
+						gurumeList = append(gurumeList, gurume)
 					} else {
 						// exception
-						fmt.Printf("exception: %s - %s\n", category, str)
+						// fmt.Printf("exception: %s - %s\n", category, str)
+						gurume := fmt.Sprintf("exception: %s - %s", category, str)
+						gurumeList = append(gurumeList, gurume)
 					}
 
 					// output:
@@ -120,4 +137,31 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 			panic(err)
 		}
 	} // file read done
+
+	writeGurumeList(gurumeList)
+}
+
+// write gurume file
+func writeGurumeList(gurumeList []string) {
+	f, err := os.Create(resultFile)
+	if err != nil {
+		fmt.Println(err)
+		f.Close()
+		return
+	}
+
+	for _, gurume := range gurumeList {
+		fmt.Fprintln(f, gurume)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
+
+	err = f.Close()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Printf("file written successfully: %s\n", resultFile)
 }
