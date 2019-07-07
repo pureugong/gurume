@@ -43,8 +43,18 @@ func main() {
 			} else {
 
 				// TODO: review, info, hotel handling
-				if strings.Contains(category, "review") || strings.Contains(category, "info") || strings.Contains(category, "hotel") {
+				if strings.Contains(category, "review") || strings.Contains(category, "info") {
 					//
+				} else if strings.Contains(category, "hotel") {
+					// subCategory - name
+					hotel := strings.Split(str, "-")
+					subCategory := strings.TrimSpace(hotel[0])
+					if strings.Contains(subCategory, "델리") {
+						subCategory = fmt.Sprintf("%s, %s", subCategory, "베이커리")
+					}
+					name := strings.TrimSpace(hotel[1])
+
+					fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
 				} else if strings.Contains(category, "노포 식당") {
 					// town - name - since
 					nopo := strings.Split(str, "-")
