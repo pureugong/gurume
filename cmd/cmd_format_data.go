@@ -11,6 +11,7 @@ import (
 )
 
 const categoryPrefix = "="
+const dataDir = "./data"
 
 var formatDataCmd = &cobra.Command{
 	Use:   "formatData",
@@ -35,14 +36,17 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 	var err error
 
 	// read file
-	fmt.Printf(">> read file: %s\n", fileName)
-	fp, err = os.Open(fileName)
+	fullFilePath := fmt.Sprintf("%s/%s", dataDir, fileName)
+	fmt.Printf(">> read file: %s\n", fullFilePath)
+	fp, err = os.Open(fullFilePath)
 	if err != nil {
 		panic(err)
 	}
 	defer fp.Close()
 
 	reader := bufio.NewReaderSize(fp, 4096)
+
+	// process start
 	var category string
 	for {
 		// read
@@ -115,5 +119,5 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 		} else if err != nil {
 			panic(err)
 		}
-	}
+	} // file read done
 }
