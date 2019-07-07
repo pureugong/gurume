@@ -55,6 +55,21 @@ go run main.go gurume.txt > gurume.processed.1.txt
 ```s
 ## generate go cmd
 go run main.go formatData --file gurume.txt
+
+## check file
+head -n2 data/gurume.processed.1.json | jq
+{
+  "category": "평양냉면",
+  "station": "을지로 3가역",
+  "town": "입정동",
+  "name": "을지면옥"
+}
+{
+  "category": "평양냉면",
+  "station": "압구정역, 학동역",
+  "town": "논현동",
+  "name": "논현동 평양면옥"
+}
 ```
 
 ### `gurume.json` on elasticsearch

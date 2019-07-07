@@ -1,0 +1,77 @@
+version: '3.5'
+services:
+# elasticsearch cluster
+  elasticsearch:
+    build: ./elasticsearch
+    container_name: elasticsearch
+    environment:
+      - node.name=es01
+      - cluster.name=catalog-es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+  elasticsearch2:
+    build: ./elasticsearch
+    container_name: elasticsearch2
+    environment:
+      - node.name=es02
+      - cluster.name=catalog-es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+  elasticsearch3:
+    build: ./elasticsearch
+    container_name: elasticsearch3
+    environment:
+      - node.name=es03
+      - cluster.name=catalog-es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata3:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+# kibana
+  kibana:
+    build: ./kibana
+    container_name: kibana
+    environment:
+      SERVER_NAME: localhost
+      ELASTICSEARCH_URL: http://elasticsearch:9200/
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+# volumes
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+  esdata3:
+    driver: local
+# networks
+networks:
+  esnet:
