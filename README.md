@@ -37,6 +37,13 @@
 ## check exception case
 go run main.go gurume.txt | grep -v 'info\|review\|hotel' | grep exception
 
+## expcetion case update gurume.txt
+
+## add 노포식당 handling
+
+## generate processed txt
+go run main.go gurume.txt > gurume.processed.1.txt
+
 ```
 
 ### transform `gurume list` to json format
