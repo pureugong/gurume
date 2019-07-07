@@ -73,7 +73,11 @@ head -n2 data/gurume.processed.1.json | jq
 ```
 
 ### `gurume.json` on elasticsearch
-- TBU
+```sh
+## build es
+docker-compose build
+
+```
 
 ## AWS elasticsearch
 - TBU
