@@ -60,13 +60,3 @@ go run main.go gurume.txt > gurume.processed.1.txt
 
 ## Frontend - (vue)
 - TBU
-
-
-
-grep -E "\s\W{1,3}동\s\-" gurume-list.txt | sed 's/.*/\n&/'
-
-
-
-
-
-sed 's/.*/\n&/g'
