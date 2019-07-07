@@ -42,7 +42,7 @@
 {"category":"평양냉면, 서울 근교","town":"의정부시 의정부동","name":"의정부 평양면옥"}
 {"category":"평양냉면, 서울 근교","town":"하남시 신장동","name":"의정부 평양면옥 하남점"}
 {"category":"평양냉면, 서울 근교","town":"광명시 광명동","name":"정인면옥"}
-{"category":"평양냉면, 서울 근교","station":"N/A  중부면","town":"남한산성 광주시","name":"산성면옥"}
+{"category":"평양냉면, 서울 근교","town":"남한산성 광주시 중부면","name":"산성면옥"}
 {"category":"평양냉면, 서울 근교","town":"광주시 오포읍","name":"고구려"}
 {"category":"평양냉면, 서울 근교","town":"고양시 일산동구","name":"대동관"}
 {"category":"평양냉면, 서울 근교","town":"고양시 일산서구","name":"송추면옥"}
@@ -162,7 +162,7 @@
 {"category":"메밀국수, 소바","station":"선릉역, 한티역","town":"대치동","name":"마초야"}
 {"category":"메밀국수, 소바","station":"강남역","town":"역삼동","name":"기리야마 본진"}
 {"category":"메밀국수, 소바","station":"을지로입구역","town":"명동","name":"장수분식"}
-{"category":"메밀국수, 소바","station":"종각역 그랑서울","town":"청진동","name":"오두산 메밀가"}
+{"category":"메밀국수, 소바","station":"종각역","town":"청진동","name":"오두산 메밀가"}
 {"category":"메밀국수, 소바","station":"상수역","town":"상수동","name":"메밀살롱"}
 {"category":"메밀국수, 소바","station":"망원역","town":"합정동","name":"마포 즉석 모밀촌"}
 {"category":"막국수","station":"방화역","town":"방화동","name":"고성막국수"}
@@ -492,7 +492,7 @@
 {"category":"순대","station":"마포구청역","town":"망원동","name":"순대일번지"}
 {"category":"순대","station":"혜화역, 동대문역","town":"이화동","name":"왕십리순대국"}
 {"category":"순대","station":"서대문역","town":"영천동","name":"석교식당"}
-{"category":"순대","station":"을지로 3가","town":"입정동","name":"쌍벌식당"}
+{"category":"순대","station":"을지로 3가역","town":"입정동","name":"쌍벌식당"}
 {"category":"순대","station":"종로 5가역","town":"예지동","name":"광장시장 할머니 순대"}
 {"category":"순대","station":"종로 3가역","town":"낙원동","name":"호반"}
 {"category":"순대","station":"문래역, 신도림역","town":"문래동","name":"오복순대국"}
@@ -543,7 +543,7 @@
 {"category":"닭볶음탕","station":"신촌역","town":"창천동","name":"누나네포차"}
 {"category":"닭볶음탕","station":"종로3가역","town":"와룡동","name":"와룡동 닭매운탕"}
 {"category":"닭볶음탕","station":"가락시장역","town":"가락동","name":"진또배기"}
-{"category":"닭볶음탕","station":"종로 3가","town":"익선동","name":"오죽이네"}
+{"category":"닭볶음탕","station":"종로 3가역","town":"익선동","name":"오죽이네"}
 {"category":"닭볶음탕","station":"회기역","town":"회기동","name":"여기가 좋겠네"}
 {"category":"닭볶음탕","station":"암사역","town":"암사동","name":"날아라닭도리탕"}
 {"category":"닭볶음탕","station":"선릉역","town":"삼성동","name":"전주집"}
@@ -1027,7 +1027,7 @@
 {"category":"보쌈","station":"종로3가역","town":"낙원동","name":"장군족발보쌈"}
 {"category":"보쌈","station":"쌍문역","town":"방학동","name":"흥부족발보쌈"}
 {"category":"보쌈","station":"안국역","town":"관훈동","name":"오수"}
-{"category":"보쌈","station":"가산디지텅단지역","town":"가산동","name":"춘천옥"}
+{"category":"보쌈","station":"가산디지털단지역","town":"가산동","name":"춘천옥"}
 {"category":"족발","station":"양재역","town":"양재동","name":"영동족발"}
 {"category":"족발","station":"동대문역","town":"창신동","name":"와글와글"}
 {"category":"족발","station":"성수역","town":"성수동","name":"성수족발"}
@@ -1688,7 +1688,7 @@
 {"category":"덮밥, 백반, 벤또, 도시락","station":"강남역","town":"역삼동","name":"서진식당"}
 {"category":"덮밥, 백반, 벤또, 도시락","station":"종로3가역","town":"낙원동","name":"일미식당"}
 {"category":"덮밥, 백반, 벤또, 도시락","station":"상수역","town":"당인동","name":"당인식당"}
-{"category":"덮밥, 백반, 벤또, 도시락","station":"종로3강겨","town":"익선동","name":"익선동 121"}
+{"category":"덮밥, 백반, 벤또, 도시락","station":"종로3가역","town":"익선동","name":"익선동 121"}
 {"category":"덮밥, 백반, 벤또, 도시락","station":"청량리역","town":"청량리동","name":"광주식당"}
 {"category":"덮밥, 백반, 벤또, 도시락","station":"녹사평역","town":"이태원동","name":"은밀한밥상"}
 {"category":"덮밥, 백반, 벤또, 도시락","station":"홍대입구역","town":"서교동","name":"미나리식당"}
@@ -5291,13 +5291,13 @@
 {"category":"호텔, W 호텔, 일식 레스토랑","name":"나무"}
 {"category":"호텔, W 호텔, 뷔페","name":"키친"}
 {"category":"호텔, W 호텔, 바","name":"우바"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 프렌치 레스토랑","name":"시즌즈"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 이탈리안 레스토랑","name":"일폰테"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 중식 레스토랑","name":"타이판"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 일식 레스토랑","name":"겐지"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 뷔페","name":"카페 395"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 델리, 베이커리","name":"실란트로델리"}
-{"category":"호텔, 밀레니엄 힐튼 서울 호, 바","name":"오크룸"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 프렌치 레스토랑","name":"시즌즈"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 이탈리안 레스토랑","name":"일폰테"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 중식 레스토랑","name":"타이판"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 일식 레스토랑","name":"겐지"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 뷔페","name":"카페 395"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 델리, 베이커리","name":"실란트로델리"}
+{"category":"호텔, 밀레니엄 힐튼 서울 호텔, 바","name":"오크룸"}
 {"category":"호텔, 그랜드 힐튼 서울 호텔, 양식 레스토랑","name":"에이트리움 카페"}
 {"category":"호텔, 그랜드 힐튼 서울 호텔, 중식 레스토랑","name":"여향"}
 {"category":"호텔, 그랜드 힐튼 서울 호텔, 일식 레스토랑","name":"미쯔모모"}
