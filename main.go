@@ -56,13 +56,21 @@ func main() {
 
 					fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
 				} else if strings.Contains(category, "노포 식당") {
-					// town - name - since
+					// town - name - since, town - name - since - note
 					nopo := strings.Split(str, "-")
 					town := strings.TrimSpace(nopo[0])
 					name := strings.TrimSpace(nopo[1])
 					since := strings.TrimSpace(nopo[2])
 
-					fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+					if len(nopo) == 3 {
+						fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+					} else if len(nopo) == 4 {
+						note := strings.TrimSpace(nopo[3])
+						fmt.Printf("%s - %s - N/A - %s (since %s) - %s\n", category, town, name, since, note)
+					} else {
+						fmt.Printf("exception: %s - %s\n", category, str)
+					}
+
 				} else {
 					cnt := strings.Count(str, "-")
 
