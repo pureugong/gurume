@@ -37,23 +37,41 @@ func main() {
 		if str != "" {
 			// 1. cateogry (also includes info, review, hotel)
 			if strings.HasPrefix(str, categoryPrefix) {
-				// 1.a. remove =
+				// trim category string
 				category = strings.Split(str, categoryPrefix)[1]
-				// 1.b trim category string
 				category = strings.TrimSpace(category)
 			} else {
 
-				cnt := strings.Count(str, "-")
-				if cnt == 0 {
-					fmt.Printf("%s - N/A - N/A - %s\n", category, str)
-				} else if cnt == 2 || cnt == 3 {
-					fmt.Printf("%s - %s\n", category, str)
-				} else {
-					fmt.Printf("exception: %s - %s\n", category, str)
-				}
+				// TODO: review, info, hotel handling
+				if strings.Contains(category, "review") || strings.Contains(category, "info") || strings.Contains(category, "hotel") {
+					//
+				} else if strings.Contains(category, "노포 식당") {
+					// town - name - since
+					nopo := strings.Split(str, "-")
+					town := strings.TrimSpace(nopo[0])
+					name := strings.TrimSpace(nopo[1])
+					since := strings.TrimSpace(nopo[2])
 
+					fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+				} else {
+					cnt := strings.Count(str, "-")
+
+					if cnt == 0 {
+						// restraunt only
+						fmt.Printf("%s - N/A - N/A - %s\n", category, str)
+					} else if cnt == 2 || cnt == 3 {
+						// town - station - restraunt, town - station - restraunt - note case
+						fmt.Printf("%s - %s\n", category, str)
+					} else {
+						// exception
+						fmt.Printf("exception: %s - %s\n", category, str)
+					}
+
+					// output:
+					// category - town - station - restraunt - note
+					// category - town - station - restraunt
+				}
 			}
-			// fmt.Println(str)
 		}
 
 		// end of file
