@@ -77,6 +77,18 @@ head -n2 data/gurume.processed.1.json | jq
 ## build es
 docker-compose build
 
+## cluster up
+docker-compose up -d elasticsearch2 elasticsearch3 elasticsearch
+
+## mapping check
+curl localhost:9200/gurume_index/_mapping | jq
+
+## search test
+curl \
+ -H 'Content-Type: application/json'\
+ -X POST 'localhost:9200/gurume_index/gurume/_search'\
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "category" : "곰탕" } }}' | jq '.hits.hits[]._source.category'
+
 ```
 
 ## AWS elasticsearch

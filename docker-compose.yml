@@ -14,6 +14,7 @@ services:
         soft: -1
         hard: -1
     volumes:
+      - ./elasticsearch/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
@@ -33,6 +34,7 @@ services:
         soft: -1
         hard: -1
     volumes:
+      - ./elasticsearch/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
       - esdata2:/usr/share/elasticsearch/data
     networks:
       - esnet
@@ -50,13 +52,14 @@ services:
         soft: -1
         hard: -1
     volumes:
+      - ./elasticsearch/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
       - esdata3:/usr/share/elasticsearch/data
     networks:
       - esnet
 # kibana
   kibana:
     build: ./kibana
-    container_name: kibana
+    container_name: gurume-kibana
     environment:
       SERVER_NAME: localhost
       ELASTICSEARCH_URL: http://elasticsearch:9200/
