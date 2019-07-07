@@ -113,7 +113,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 			}
 		}
 
-		// end of file
+		// EOF(end of file)
 		if err == io.EOF {
 			break
 		} else if err != nil {
