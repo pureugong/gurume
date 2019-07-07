@@ -51,7 +51,11 @@ go run main.go gurume.txt > gurume.processed.1.txt
 ```
 
 ### transform `gurume list` to json format
-- TBU
+
+```s
+## generate go cmd
+go run main.go formatData --file gurume.txt
+```
 
 ### `gurume.json` on elasticsearch
 - TBU
