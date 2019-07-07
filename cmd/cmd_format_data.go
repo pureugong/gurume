@@ -78,7 +78,8 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 					name := strings.TrimSpace(hotel[1])
 
 					// fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
-					gurume := fmt.Sprintf("%s, %s - N/A - N/A - %s", category, subCategory, name)
+
+					gurume := fmt.Sprintf("%s, %s - N/A - N/A - %s", strings.Replace(category, "hotel, ", "", 1), subCategory, name)
 					gurumeList = append(gurumeList, gurume)
 
 				} else if strings.Contains(category, "노포 식당") {
