@@ -44,6 +44,10 @@ go run main.go gurume.txt | grep -v 'info\|review\|hotel' | grep exception
 ## generate processed txt
 go run main.go gurume.txt > gurume.processed.1.txt
 
+## WARN!! - ZERO WIDTH SPACE, must handle (U+200B)
+
+## ... continue
+
 ```
 
 ### transform `gurume list` to json format
