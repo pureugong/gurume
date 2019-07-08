@@ -1,5 +1,6 @@
-- [gurume ETL](#gurume-ETL)
+- [gurume ETL README](#gurume-ETL-README)
   - [ETL overview](#ETL-overview)
+- [TODO](#TODO)
   - [nogada](#nogada)
     - [transform `gurume list` to json format](#transform-gurume-list-to-json-format)
     - [`gurume.json` on elasticsearch](#gurumejson-on-elasticsearch)
@@ -7,7 +8,7 @@
   - [Backend - elasticsearch client (golang)](#Backend---elasticsearch-client-golang)
   - [Frontend - (vue)](#Frontend---vue)
 
-# gurume ETL
+# gurume ETL README
 
 ## ETL overview
 - extract `gurume category` from gurume.txt
@@ -30,6 +31,14 @@
     //...
 ]
 ```
+
+# TODO
+- [x] ETL pipeline
+- [x] design ES mapping
+- [x] Backend ES client
+- [ ] Frontend app
+- [ ] AWS ECS setup
+- [ ] jenkins build / deploy pipeline
 
 ## nogada
 
