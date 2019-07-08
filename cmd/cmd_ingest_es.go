@@ -67,7 +67,7 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 
 	} // file read done
 
-	// ES
+	// ES client
 	httpClient := &http.Client{
 		Transport: &BasicAuthTransport{
 			username: viper.GetString("ES_CLUSTER_USER_ID"),
@@ -80,30 +80,32 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 		elastic.SetHttpClient(httpClient),
 		elastic.SetSniff(false),
 	)
-
-	// client, err := elastic.NewClient(elastic.SetSniff(false))
 	if err != nil {
 		panic(err)
 	}
 	defer client.Stop()
 
+	// ES client - create index
 	ctx := context.Background()
 	err = createIndex(ctx, client, "gurume_index")
 	if err != nil {
 		panic(err)
 	}
 
+	// ES client - bulk request
 	bulkRequest := client.Bulk()
 	for _, gurume := range gurumeList {
 		indexReq := elastic.NewBulkIndexRequest().Index("gurume_index").Type("gurume").Doc(gurume)
 		bulkRequest = bulkRequest.Add(indexReq)
 	}
 
+	// ES client - bulk response
 	bulkResponse, err := bulkRequest.Do(ctx)
 	if err != nil {
 		panic(err)
 	}
 
+	// ES client - bulk response check
 	indexed := bulkResponse.Indexed()
 	if len(indexed) != len(gurumeList) {
 		panic("there are missing gurume on es")
@@ -183,22 +185,30 @@ const gurumeMapping = `
 		"gurume":{
 			"properties":{
 				"category":{
-					"type":"text",
-					"analyzer": "nori_korean",
-					"fields": {
-						"keyword": {
-							"type": "keyword",
-							"ignore_above": 256
+					"properties": {
+						"name": {
+							"type":"text",
+							"analyzer": "nori_korean",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
 						}
 					}
 				},
 				"station":{
-					"type":"text",
-					"analyzer": "nori_korean",
-					"fields": {
-						"keyword": {
-							"type": "keyword",
-							"ignore_above": 256
+					"properties": {
+						"name": {
+							"type":"text",
+							"analyzer": "nori_korean",
+							"fields": {
+								"keyword": {
+									"type": "keyword",
+									"ignore_above": 256
+								}
+							}
 						}
 					}
 				},

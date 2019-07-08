@@ -48,29 +48,27 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 			// TODO: encapsulate
 			rawGurume := strings.Split(str, "-")
 
-			for index := 0; index < len(rawGurume); index++ {
-				rawGurume[index] = strings.TrimSpace(rawGurume[index])
-				if rawGurume[index] == "N/A" {
-					rawGurume[index] = ""
-				}
-			}
-
 			if len(rawGurume) == 4 {
-				gurumeList = append(gurumeList, NewGurume(
-					rawGurume[0],
-					rawGurume[1],
-					rawGurume[2],
-					rawGurume[3],
-					"",
-				))
+
+				gurumeList = append(
+					gurumeList,
+					NewGurume().
+						SetCategory(rawGurume[0]).
+						SetTown(rawGurume[1]).
+						SetStation(rawGurume[2]).
+						SetName(rawGurume[3]),
+				)
+
 			} else if len(rawGurume) == 5 {
-				gurumeList = append(gurumeList, NewGurume(
-					rawGurume[0],
-					rawGurume[1],
-					rawGurume[2],
-					rawGurume[3],
-					rawGurume[4],
-				))
+				gurumeList = append(
+					gurumeList,
+					NewGurume().
+						SetCategory(rawGurume[0]).
+						SetTown(rawGurume[1]).
+						SetStation(rawGurume[2]).
+						SetName(rawGurume[3]).
+						SetNote(rawGurume[4]),
+				)
 			}
 		}
 
@@ -84,26 +82,6 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 
 	// writeGurumeJSON
 	writeGurumeJSON(gurumeList)
-}
-
-// Gurume data type
-type Gurume struct {
-	Category string `json:"category"`
-	Station  string `json:"station,omitempty"`
-	Town     string `json:"town,omitempty"`
-	Name     string `json:"name"`
-	Note     string `json:"note,omitempty"`
-}
-
-// NewGurume is to init gurume
-func NewGurume(category, town, station, name, note string) *Gurume {
-	return &Gurume{
-		Category: category,
-		Station:  station,
-		Town:     town,
-		Name:     name,
-		Note:     note,
-	}
 }
 
 var resultJSONFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.json")
@@ -131,5 +109,5 @@ func writeGurumeJSON(gurumeList []*Gurume) {
 		logger.WithError(err).Error("error")
 		return
 	}
-	logger.Infof("file written successfully: %s\n", resultJSONFile)
+	logger.Infof("file written successfully: %s", resultJSONFile)
 }

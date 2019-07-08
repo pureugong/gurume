@@ -11,7 +11,9 @@ import (
 )
 
 const categoryPrefix = "="
-const dataDir = "/tmp/data"
+
+// const dataDir = "/tmp/data"
+const dataDir = "./data"
 
 var resultFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.txt")
 var fileName string
