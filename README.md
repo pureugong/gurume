@@ -3,7 +3,7 @@
   - [nogada](#nogada)
     - [transform `gurume list` to json format](#transform-gurume-list-to-json-format)
     - [`gurume.json` on elasticsearch](#gurumejson-on-elasticsearch)
-  - [elastic cloud](#elastic-cloud)
+  - [elastic cloud (optional)](#elastic-cloud-optional)
   - [Backend - elasticsearch client (golang)](#Backend---elasticsearch-client-golang)
   - [Frontend - (vue)](#Frontend---vue)
 
@@ -88,6 +88,9 @@ docker-compose build elasticsearch2 elasticsearch3 elasticsearch
 ## cluster up
 docker-compose up -d elasticsearch2 elasticsearch3 elasticsearch
 
+## bulk request to ES
+docker-compose run --rm gurume ingestES
+
 ## mapping check
 curl localhost:9200/gurume_index/_mapping | jq
 
@@ -104,8 +107,24 @@ curl \
 
 ```
 
-## elastic cloud
+## elastic cloud (optional)
 - https://cloud.elastic.co
+- create ES cluster, then update `.env` file accordingly
+```sh
+# .env example
+GURUME_ENV=production
+ES_CLUSTER_HOST=https://xxxxxxxxxxxxxx.ap-northeast-1.aws.found.io
+ES_CLUSTER_PORT=9200
+ES_CLUSTER_USER_ID=hoge
+ES_CLUSTER_USER_PW=hoge
+LOG_LEVEL=info
+```
+
+- ingest data to ES cluster
+```sh
+## bulk request to ES
+docker-compose run --rm gurume ingestES
+```
 
 ## Backend - elasticsearch client (golang)
 ```sh
