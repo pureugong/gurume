@@ -3,7 +3,7 @@
   - [nogada](#nogada)
     - [transform `gurume list` to json format](#transform-gurume-list-to-json-format)
     - [`gurume.json` on elasticsearch](#gurumejson-on-elasticsearch)
-  - [AWS elasticsearch](#AWS-elasticsearch)
+  - [elastic cloud](#elastic-cloud)
   - [Backend - elasticsearch client (golang)](#Backend---elasticsearch-client-golang)
   - [Frontend - (vue)](#Frontend---vue)
 
@@ -41,22 +41,30 @@ go run main.go gurume.txt | grep -v 'info\|review\|hotel' | grep exception
 
 ## add 노포식당 handling
 
-## generate processed txt
-go run main.go gurume.txt > gurume.processed.1.txt
-
 ## WARN!! - ZERO WIDTH SPACE, must handle (U+200B)
 
-## ... continue
+## generate processed txt
+## 1. build images (you can skip it when using local go env)
+docker-compose build gurume 
 
+## 2. process gurume.txt -> gurume.processed.1.txt
+### local env case
+go run main.go formatData --file gurume.txt
+
+### docker-compose env case
+docker-compose run --rm gurume formatData --file gurume.txt
 ```
 
 ### transform `gurume list` to json format
 
 ```s
-## generate go cmd
-go run main.go formatData --file gurume.txt
+### local env case
+go run main.go formatJSON
 
-## check file
+### docker-compose env case
+docker-compose run --rm gurume formatJSON
+
+## 3. check file
 head -n2 data/gurume.processed.1.json | jq
 {
   "category": "평양냉면",
@@ -75,7 +83,7 @@ head -n2 data/gurume.processed.1.json | jq
 ### `gurume.json` on elasticsearch
 ```sh
 ## build es
-docker-compose build
+docker-compose build elasticsearch2 elasticsearch3 elasticsearch
 
 ## cluster up
 docker-compose up -d elasticsearch2 elasticsearch3 elasticsearch
@@ -87,12 +95,17 @@ curl localhost:9200/gurume_index/_mapping | jq
 curl \
  -H 'Content-Type: application/json'\
  -X POST 'localhost:9200/gurume_index/gurume/_search'\
- --data '{ "from": 0, "size": 30, "query" : { "match" : { "category" : "곰탕" } }}' | jq '.hits.hits[]._source.category'
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "category" : "닭곰탕" } }}' | jq '.hits.hits[]._source.category'
+
+curl \
+ -H 'Content-Type: application/json'\
+ -X POST 'localhost:9200/gurume_index/gurume/_search'\
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "station" : "을지로 4가역" } }}' | jq '.hits.hits[]._source.station'
 
 ```
 
-## AWS elasticsearch
-- TBU
+## elastic cloud
+- https://cloud.elastic.co
 
 ## Backend - elasticsearch client (golang)
 - TBU
