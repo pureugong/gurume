@@ -35,6 +35,9 @@
 # TODO
 - [x] ETL pipeline
 - [x] design ES mapping
+- [ ] ES cloudsetup
+  - [ ] add user dictionary (category, station, town)
+  - [ ] create api client role
 - [x] Backend ES client
 - [ ] Frontend app
 - [ ] AWS ECS setup
