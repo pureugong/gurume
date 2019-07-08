@@ -1,5 +1,23 @@
 version: '3.5'
 services:
+# main application gurume
+  gurume:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SSH_KEY
+    environment:
+      - GURUME_ENV=${GURUME_ENV}
+      - ES_CLUSTER_HOST=${ES_CLUSTER_HOST}
+      - ES_CLUSTER_PORT=${ES_CLUSTER_PORT}
+      - ES_CLUSTER_USER_ID=${ES_CLUSTER_USER_ID}
+      - ES_CLUSTER_USER_PW=${ES_CLUSTER_USER_PW}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - ./data:/tmp/data
+    networks:
+      - gurumenet
 # elasticsearch cluster
   elasticsearch:
     build: ./elasticsearch
@@ -19,7 +37,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      - esnet
+      - gurumenet
   elasticsearch2:
     build: ./elasticsearch
     container_name: elasticsearch2
@@ -37,7 +55,7 @@ services:
       - ./elasticsearch/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
       - esdata2:/usr/share/elasticsearch/data
     networks:
-      - esnet
+      - gurumenet
   elasticsearch3:
     build: ./elasticsearch
     container_name: elasticsearch3
@@ -55,7 +73,7 @@ services:
       - ./elasticsearch/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
       - esdata3:/usr/share/elasticsearch/data
     networks:
-      - esnet
+      - gurumenet
 # kibana
   kibana:
     build: ./kibana
@@ -66,7 +84,7 @@ services:
     ports:
       - 5601:5601
     networks:
-      - esnet
+      - gurumenet
 # volumes
 volumes:
   esdata1:
@@ -77,4 +95,4 @@ volumes:
     driver: local
 # networks
 networks:
-  esnet:
+  gurumenet:

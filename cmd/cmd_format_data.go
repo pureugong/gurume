@@ -11,7 +11,7 @@ import (
 )
 
 const categoryPrefix = "="
-const dataDir = "./data"
+const dataDir = "/tmp/data"
 
 var resultFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.txt")
 var fileName string
@@ -38,7 +38,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 
 	// read file
 	fullFilePath := fmt.Sprintf("%s/%s", dataDir, fileName)
-	fmt.Printf("read file: %s\n", fullFilePath)
+	logger.Infof("read file: %s", fullFilePath)
 	fp, err = os.Open(fullFilePath)
 	if err != nil {
 		panic(err)
@@ -77,8 +77,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 					}
 					name := strings.TrimSpace(hotel[1])
 
-					// fmt.Printf("%s, %s - N/A - N/A - %s\n", category, subCategory, name)
-
+					// logger.Infof("%s, %s - N/A - N/A - %s", category, subCategory, name)
 					gurume := fmt.Sprintf("%s, %s - N/A - N/A - %s", strings.Replace(category, "hotel, ", "", 1), subCategory, name)
 					gurumeList = append(gurumeList, gurume)
 
@@ -90,16 +89,16 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 					since := strings.TrimSpace(nopo[2])
 
 					if len(nopo) == 3 {
-						// fmt.Printf("%s - %s - N/A - %s (since %s)\n", category, town, name, since)
+						// logger.Infof("%s - %s - N/A - %s (since %s)", category, town, name, since)
 						gurume := fmt.Sprintf("%s - %s - N/A - %s (since %s)", category, town, name, since)
 						gurumeList = append(gurumeList, gurume)
 					} else if len(nopo) == 4 {
 						note := strings.TrimSpace(nopo[3])
-						// fmt.Printf("%s - %s - N/A - %s (since %s) - %s\n", category, town, name, since, note)
+						// logger.Infof("%s - %s - N/A - %s (since %s) - %s", category, town, name, since, note)
 						gurume := fmt.Sprintf("%s - %s - N/A - %s (since %s) - %s", category, town, name, since, note)
 						gurumeList = append(gurumeList, gurume)
 					} else {
-						// fmt.Printf("exception: %s - %s\n", category, str)
+						// logger.Infof("exception: %s - %s", category, str)
 						gurume := fmt.Sprintf("exception: %s - %s", category, str)
 						gurumeList = append(gurumeList, gurume)
 					}
@@ -109,17 +108,17 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 
 					if cnt == 0 {
 						// restraunt only
-						// fmt.Printf("%s - N/A - N/A - %s\n", category, str)
+						// logger.Infof("%s - N/A - N/A - %s", category, str)
 						gurume := fmt.Sprintf("%s - N/A - N/A - %s", category, str)
 						gurumeList = append(gurumeList, gurume)
 					} else if cnt == 2 || cnt == 3 {
 						// town - station - restraunt, town - station - restraunt - note case
-						// fmt.Printf("%s - %s\n", category, str)
+						// logger.Infof("%s - %s", category, str)
 						gurume := fmt.Sprintf("%s - %s", category, str)
 						gurumeList = append(gurumeList, gurume)
 					} else {
 						// exception
-						// fmt.Printf("exception: %s - %s\n", category, str)
+						// logger.Infof("exception: %s - %s", category, str)
 						gurume := fmt.Sprintf("exception: %s - %s", category, str)
 						gurumeList = append(gurumeList, gurume)
 					}
@@ -146,7 +145,7 @@ func formatDataExecute(cmd *cobra.Command, args []string) {
 func writeGurumeList(gurumeList []string) {
 	f, err := os.Create(resultFile)
 	if err != nil {
-		fmt.Println(err)
+		logger.WithError(err).Error("error")
 		f.Close()
 		return
 	}
@@ -154,15 +153,15 @@ func writeGurumeList(gurumeList []string) {
 	for _, gurume := range gurumeList {
 		fmt.Fprintln(f, gurume)
 		if err != nil {
-			fmt.Println(err)
+			logger.WithError(err).Error("error")
 			return
 		}
 	}
 
 	err = f.Close()
 	if err != nil {
-		fmt.Println(err)
+		logger.WithError(err).Error("error")
 		return
 	}
-	fmt.Printf("file written successfully: %s\n", resultFile)
+	logger.Infof("file written successfully: %s", resultFile)
 }

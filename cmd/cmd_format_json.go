@@ -112,7 +112,7 @@ var resultJSONFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.json")
 func writeGurumeJSON(gurumeList []*Gurume) {
 	f, err := os.Create(resultJSONFile)
 	if err != nil {
-		fmt.Println(err)
+		logger.WithError(err).Error("error")
 		f.Close()
 		return
 	}
@@ -121,15 +121,15 @@ func writeGurumeJSON(gurumeList []*Gurume) {
 		bytes, _ := json.Marshal(gurume)
 		fmt.Fprintln(f, string(bytes))
 		if err != nil {
-			fmt.Println(err)
+			logger.WithError(err).Error("error")
 			return
 		}
 	}
 
 	err = f.Close()
 	if err != nil {
-		fmt.Println(err)
+		logger.WithError(err).Error("error")
 		return
 	}
-	fmt.Printf("file written successfully: %s\n", resultJSONFile)
+	logger.Infof("file written successfully: %s\n", resultJSONFile)
 }

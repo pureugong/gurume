@@ -6,9 +6,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 
 	elastic "github.com/olivere/elastic"
 )
@@ -22,6 +24,13 @@ var ingestElasticSearch = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(ingestElasticSearch)
+
+	// bind es information ENV
+	viper.BindEnv("ES_CLUSTER_HOST")
+	viper.BindEnv("ES_CLUSTER_PORT")
+	viper.BindEnv("ES_CLUSTER_USER_ID")
+	viper.BindEnv("ES_CLUSTER_USER_PW")
+
 }
 
 func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
@@ -45,7 +54,7 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 		if string(line) != "" {
 			gurume := &Gurume{}
 			_ = json.Unmarshal(line, &gurume)
-			fmt.Println(gurume)
+			logger.Info(gurume)
 			gurumeList = append(gurumeList, gurume)
 		}
 
@@ -59,7 +68,20 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 	} // file read done
 
 	// ES
-	client, err := elastic.NewClient(elastic.SetSniff(false))
+	httpClient := &http.Client{
+		Transport: &BasicAuthTransport{
+			username: viper.GetString("ES_CLUSTER_USER_ID"),
+			password: viper.GetString("ES_CLUSTER_USER_PW"),
+		},
+	}
+	elasticURL := fmt.Sprintf("%s:%s", viper.GetString("ES_CLUSTER_HOST"), viper.GetString("ES_CLUSTER_PORT"))
+	client, err := elastic.NewClient(
+		elastic.SetURL(elasticURL),
+		elastic.SetHttpClient(httpClient),
+		elastic.SetSniff(false),
+	)
+
+	// client, err := elastic.NewClient(elastic.SetSniff(false))
 	if err != nil {
 		panic(err)
 	}
@@ -122,6 +144,18 @@ func createIndex(ctx context.Context, client *elastic.Client, indexName string) 
 	return nil
 }
 
+// BasicAuthTransport
+type BasicAuthTransport struct {
+	username string
+	password string
+}
+
+func (tr *BasicAuthTransport) RoundTrip(r *http.Request) (*http.Response, error) {
+	r.SetBasicAuth(tr.username, tr.password)
+	return http.DefaultTransport.RoundTrip(r)
+}
+
+// TODO: add "user_dictionary": "userdict_ko.txt"
 const gurumeMapping = `
 {
 	"settings":{
@@ -132,8 +166,7 @@ const gurumeMapping = `
 				"tokenizer": {
 					"nori_user_dict": {
 						"type": "nori_tokenizer",
-						"decompound_mode": "mixed",
-						"user_dictionary": "userdict_ko.txt"
+						"decompound_mode": "mixed"
 					}
 				},
 				"analyzer": {
@@ -150,17 +183,43 @@ const gurumeMapping = `
 			"properties":{
 				"category":{
 					"type":"text",
-					"analyzer": "nori_korean"
+					"analyzer": "nori_korean",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"station":{
-					"type":"text"
+					"type":"text",
+					"analyzer": "nori_korean",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"town":{
-					"type":"text"
+					"type":"text",
+					"analyzer": "nori_korean",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"name":{
 					"type":"text",
-					"analyzer": "nori_korean"
+					"analyzer": "nori_korean",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
 				},
 				"note":{
 					"type":"text",
