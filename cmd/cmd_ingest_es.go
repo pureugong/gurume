@@ -144,12 +144,13 @@ func createIndex(ctx context.Context, client *elastic.Client, indexName string) 
 	return nil
 }
 
-// BasicAuthTransport
+// BasicAuthTransport is to store username, password for bearer header
 type BasicAuthTransport struct {
 	username string
 	password string
 }
 
+// RoundTrip is to add bearer header
 func (tr *BasicAuthTransport) RoundTrip(r *http.Request) (*http.Response, error) {
 	r.SetBasicAuth(tr.username, tr.password)
 	return http.DefaultTransport.RoundTrip(r)
