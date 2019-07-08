@@ -4,11 +4,11 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
-	"net/http"
 	"os"
 
+	"github.com/pureugong/gurume/config"
+	"github.com/pureugong/gurume/model"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -47,12 +47,12 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 	reader := bufio.NewReaderSize(fp, 4096)
 
 	// process start
-	var gurumeList []*Gurume
+	var gurumeList []*model.Gurume
 	for {
 		// read
 		line, _, err := reader.ReadLine()
 		if string(line) != "" {
-			gurume := &Gurume{}
+			gurume := &model.Gurume{}
 			_ = json.Unmarshal(line, &gurume)
 			logger.Info(gurume)
 			gurumeList = append(gurumeList, gurume)
@@ -68,21 +68,7 @@ func ingestElasticSearchExecute(cmd *cobra.Command, args []string) {
 	} // file read done
 
 	// ES client
-	httpClient := &http.Client{
-		Transport: &BasicAuthTransport{
-			username: viper.GetString("ES_CLUSTER_USER_ID"),
-			password: viper.GetString("ES_CLUSTER_USER_PW"),
-		},
-	}
-	elasticURL := fmt.Sprintf("%s:%s", viper.GetString("ES_CLUSTER_HOST"), viper.GetString("ES_CLUSTER_PORT"))
-	client, err := elastic.NewClient(
-		elastic.SetURL(elasticURL),
-		elastic.SetHttpClient(httpClient),
-		elastic.SetSniff(false),
-	)
-	if err != nil {
-		panic(err)
-	}
+	client := config.NewESClient()
 	defer client.Stop()
 
 	// ES client - create index
@@ -144,18 +130,6 @@ func createIndex(ctx context.Context, client *elastic.Client, indexName string) 
 	}
 
 	return nil
-}
-
-// BasicAuthTransport is to store username, password for bearer header
-type BasicAuthTransport struct {
-	username string
-	password string
-}
-
-// RoundTrip is to add bearer header
-func (tr *BasicAuthTransport) RoundTrip(r *http.Request) (*http.Response, error) {
-	r.SetBasicAuth(tr.username, tr.password)
-	return http.DefaultTransport.RoundTrip(r)
 }
 
 // TODO: add "user_dictionary": "userdict_ko.txt"

@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/pureugong/gurume/model"
 	"github.com/spf13/cobra"
 )
 
@@ -36,7 +37,7 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 	reader := bufio.NewReaderSize(fp, 4096)
 
 	// process start
-	var gurumeList []*Gurume
+	var gurumeList []*model.Gurume
 	for {
 		// read
 		line, _, err := reader.ReadLine()
@@ -52,7 +53,7 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 
 				gurumeList = append(
 					gurumeList,
-					NewGurume().
+					model.NewGurume().
 						SetCategory(rawGurume[0]).
 						SetTown(rawGurume[1]).
 						SetStation(rawGurume[2]).
@@ -62,7 +63,7 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 			} else if len(rawGurume) == 5 {
 				gurumeList = append(
 					gurumeList,
-					NewGurume().
+					model.NewGurume().
 						SetCategory(rawGurume[0]).
 						SetTown(rawGurume[1]).
 						SetStation(rawGurume[2]).
@@ -87,7 +88,7 @@ func formatJSONCmdExecute(cmd *cobra.Command, args []string) {
 var resultJSONFile = fmt.Sprintf("%s/%s", dataDir, "gurume.processed.1.json")
 
 // write gurume json file
-func writeGurumeJSON(gurumeList []*Gurume) {
+func writeGurumeJSON(gurumeList []*model.Gurume) {
 	f, err := os.Create(resultJSONFile)
 	if err != nil {
 		logger.WithError(err).Error("error")
