@@ -43,21 +43,20 @@ func (m *MainController) Router() http.Handler {
 			From(0).Size(100).     // take documents 0-9
 			Do(ctx)                // execute
 		if err != nil {
+			m.Logger.WithError(err).Error("es client search fail")
 			panic(err)
 		}
-
-		m.Logger.Infof("Query took %d milliseconds", searchResult.TookInMillis)
+		m.Logger.Debugf("Query took %d milliseconds", searchResult.TookInMillis)
 
 		gurumeList := make([]model.Gurume, 0)
 		var gurume model.Gurume
 		for _, item := range searchResult.Each(reflect.TypeOf(gurume)) {
 			if g, ok := item.(model.Gurume); ok {
 				gurumeList = append(gurumeList, g)
-				// m.Logger.Infof("%+v", g)
 			}
 		}
 
-		m.Logger.Infof("Found a total of %d product", searchResult.TotalHits())
+		m.Logger.Debugf("Found a total of %d gurume", searchResult.TotalHits())
 
 		w.Header().Set("Content-Type", "application/json")
 		result, _ := json.Marshal(gurumeList)
