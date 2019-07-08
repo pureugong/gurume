@@ -34,8 +34,13 @@ func (m *MainController) Router() http.Handler {
 
 	r.Get("/gurume", func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
+
+		// Request Param
+		terms := r.URL.Query().Get("search")
+
+		// ES search
 		q := elastic.NewBoolQuery()
-		q.Must(elastic.NewTermQuery("station.name", "낙성대역"))
+		q.Must(elastic.NewTermQuery("station.name", terms))
 
 		searchResult, err := m.ESClient.Search().
 			Index("gurume_index"). // search in index
@@ -48,20 +53,42 @@ func (m *MainController) Router() http.Handler {
 		}
 		m.Logger.Debugf("Query took %d milliseconds", searchResult.TookInMillis)
 
-		gurumeList := make([]model.Gurume, 0)
+		// API Response
+		gurumeList := make([]*model.Gurume, 0)
 		var gurume model.Gurume
 		for _, item := range searchResult.Each(reflect.TypeOf(gurume)) {
 			if g, ok := item.(model.Gurume); ok {
-				gurumeList = append(gurumeList, g)
+				gurumeList = append(gurumeList, &g)
 			}
 		}
 
 		m.Logger.Debugf("Found a total of %d gurume", searchResult.TotalHits())
 
 		w.Header().Set("Content-Type", "application/json")
-		result, _ := json.Marshal(gurumeList)
+		response := New200GurumeResponse(searchResult.TotalHits(), gurumeList)
+		result, _ := json.Marshal(response)
 		w.Write(result)
 	})
 
 	return r
+}
+
+// GurumeResponse is
+type GurumeResponse struct {
+	Status string  `json:"status"`
+	Result *Result `json:"result"`
+}
+
+// Result is
+type Result struct {
+	Found   int64           `json:"found"`
+	Gurumes []*model.Gurume `json:"gurumes"`
+}
+
+// New200GurumeResponse is
+func New200GurumeResponse(found int64, gurumes []*model.Gurume) *GurumeResponse {
+	return &GurumeResponse{
+		Status: "ok",
+		Result: &Result{found, gurumes},
+	}
 }
