@@ -108,7 +108,13 @@ curl \
 - https://cloud.elastic.co
 
 ## Backend - elasticsearch client (golang)
-- TBU
+```sh
+### local env case
+go run main.go api
+
+### docker-compose env case
+docker-compose run --rm gurume api
+```
 
 ## Frontend - (vue)
 - TBU
