@@ -37,16 +37,8 @@ func (m *MainController) Router() http.Handler {
 		q := elastic.NewBoolQuery()
 		q.Must(elastic.NewTermQuery("station.name", "낙성대역"))
 
-		// if SearchProdID != "" {
-		// 	q.Must(elastic.NewTermQuery("prod_id", SearchProdID))
-		// }
-
-		// if SearchRegion != "" {
-		// 	q.Must(elastic.NewTermQuery("region", SearchRegion))
-		// }
-
 		searchResult, err := m.ESClient.Search().
-			Index("gurume_index"). // search in index "twitter"
+			Index("gurume_index"). // search in index
 			Query(q).              // specify the query
 			From(0).Size(100).     // take documents 0-9
 			Do(ctx)                // execute
