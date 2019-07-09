@@ -39,8 +39,19 @@ func (m *MainController) Router() http.Handler {
 		terms := r.URL.Query().Get("search")
 
 		// ES search
-		q := elastic.NewBoolQuery()
-		q.Must(elastic.NewTermQuery("station.name", terms))
+
+		q := elastic.NewMultiMatchQuery(
+			terms,
+			"category.name",
+			"town",
+			"station.name",
+			"name",
+			"note",
+		).Type("cross_fields")
+		// .Operator("and")
+
+		// q := elastic.NewBoolQuery()
+		// q.Must(elastic.NewTermQuery("station.name", terms))
 
 		searchResult, err := m.ESClient.Search().
 			Index("gurume_index"). // search in index
