@@ -17,26 +17,28 @@
 - load `gurume.json` on elasticsearch
 
 ```js
-// gurume.json example ?
+// gurume.json example (v0.0.1)
 [
-    {
-        "name": "이레김밥",            // es mapping type : text ?
-        "category": ["김밥"],         // es mapping type : text ?
-        "station": "낙성대역",         // es mapping type : keyword
-        "town": "인헌동",             // es mapping type : keyword
-        "instagram": "https://xxxx", // es mapping type : keyword
-        "google_map": "https://xxxx" // es mapping type : keyword
-        "remark": "xxxxxxx"          // es mapping type : text ?
-    },
-    //...
+  {
+    "category": [
+        {"name": "소고기"},
+        {"name": "숙성 고기집"}
+    ],
+    "town": "서초동",
+    "station": [
+        {"name": "강남역"}
+    ],
+    "name": "어사담",
+    "note": "드라이에이징"
+  },
 ]
 ```
 
 # TODO
 - [x] ETL pipeline
 - [x] design ES mapping
-- [ ] ES cloudsetup
-  - [ ] add user dictionary (category, station, town)
+- [x] ES cloudsetup
+  - [x] add user dictionary (category, station, town)
   - [ ] create api client role
 - [x] Backend ES client
 - [ ] Frontend app
@@ -139,12 +141,22 @@ docker-compose run --rm gurume ingestES
 ```
 
 ## Backend - elasticsearch client (golang)
+- API check in local env
 ```sh
 ### local env case
 go run main.go api
 
 ### docker-compose env case
 docker-compose run --rm gurume api
+```
+
+- Docker image build and push (manual)
+```sh
+## FYI, it will be automated by build pipeline
+docker build -t pureugong/gurume:latest  .
+$(aws --profile pureugong-gurume  ecr get-login --no-include-email)
+docker tag pureugong/gurume:latest {aws-ecr-host}/{ecr-repo-name}:{version}
+docker push {aws-ecr-host}/{ecr-repo-name}:{version}
 ```
 
 ## Frontend - (vue)
