@@ -32,6 +32,13 @@ func (m *MainController) Router() http.Handler {
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
 
+	// status endpoint
+	r.Get("/status", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("ok\n"))
+	})
+
 	r.Get("/gurume", func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 
