@@ -143,7 +143,8 @@ const gurumeMapping = `
 				"tokenizer": {
 					"nori_user_dict": {
 						"type": "nori_tokenizer",
-						"decompound_mode": "mixed"
+						"decompound_mode": "mixed",
+						"user_dictionary": "userdict_ko.txt"
 					}
 				},
 				"analyzer": {
