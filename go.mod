@@ -5,6 +5,7 @@ go 1.11
 require (
 	github.com/fortytw2/leaktest v1.3.0 // indirect
 	github.com/go-chi/chi v4.0.2+incompatible
+	github.com/go-chi/cors v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.0 // indirect
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e // indirect
