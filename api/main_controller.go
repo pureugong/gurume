@@ -39,16 +39,15 @@ func (m *MainController) Router() http.Handler {
 		w.Write([]byte("ok\n"))
 	})
 
-	r.Get("/gurume", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/search", func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
 
 		// Request Param
-		terms := r.URL.Query().Get("search")
+		text := r.URL.Query().Get("text")
 
 		// ES search
-
 		q := elastic.NewMultiMatchQuery(
-			terms,
+			text,
 			"category.name",
 			"town",
 			"station.name",
