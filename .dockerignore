@@ -1,0 +1,10 @@
+.vscode
+.env
+.env.sample
+.envrc
+
+frontend
+elasticsearch
+kibana
+docker-compose.yml
+README.md
