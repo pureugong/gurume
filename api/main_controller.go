@@ -57,6 +57,7 @@ func (m *MainController) Router() http.Handler {
 
 		// Request Param
 		text := r.URL.Query().Get("text")
+		logger := m.Logger.WithField("text", text)
 
 		// ES search
 		q := elastic.NewMultiMatchQuery(
@@ -65,7 +66,7 @@ func (m *MainController) Router() http.Handler {
 			"town",
 			"station.name",
 			"name",
-			"note",
+			// "note",
 		).Type("cross_fields")
 		// .Operator("and")
 
@@ -78,10 +79,10 @@ func (m *MainController) Router() http.Handler {
 			From(0).Size(100).     // take documents 0-9
 			Do(ctx)                // execute
 		if err != nil {
-			m.Logger.WithError(err).Error("es client search fail")
+			logger.WithError(err).Error("es client search fail")
 			panic(err)
 		}
-		m.Logger.Debugf("Query took %d milliseconds", searchResult.TookInMillis)
+		// m.Logger.Debugf("Query took %d milliseconds", searchResult.TookInMillis)
 
 		// API Response
 		gurumeList := make([]*model.Gurume, 0)
@@ -92,7 +93,13 @@ func (m *MainController) Router() http.Handler {
 			}
 		}
 
-		m.Logger.Debugf("Found a total of %d gurume", searchResult.TotalHits())
+		// m.Logger.Debugf("Found a total of %d gurume", searchResult.TotalHits())
+
+		m.Logger.WithFields(logrus.Fields{
+			"text":  text,
+			"found": searchResult.TotalHits(),
+			"took":  searchResult.TookInMillis,
+		}).Info("search log")
 
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 
