@@ -31,6 +31,7 @@ func (m *MainController) Router() http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
+	r.Use(middleware.DefaultCompress)
 
 	// status endpoint
 	r.Get("/status", func(w http.ResponseWriter, r *http.Request) {
@@ -81,7 +82,8 @@ func (m *MainController) Router() http.Handler {
 
 		m.Logger.Debugf("Found a total of %d gurume", searchResult.TotalHits())
 
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+
 		response := New200GurumeResponse(searchResult.TotalHits(), gurumeList)
 		result, _ := json.Marshal(response)
 		w.Write(result)
