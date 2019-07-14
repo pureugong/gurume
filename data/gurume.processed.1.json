@@ -151,14 +151,14 @@
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"소공동","station":[{"name":"을지로 입구역"},{"name":"시청역"}],"name":"스시조"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"서교동","station":[{"name":"홍대입구역"}],"name":"오비야"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"이촌동","station":[{"name":"동부이촌동역"}],"name":"미타니야 (도곡동, 서초동, 현대백화점 압구정, 신세계 강남점, 현대백화점 판교점등에 분점)"}
-{"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"회현동","station":[{"name":"회현역"},{"name":"남대문시장"}],"name":"우모촌"}
+{"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"회현동","station":[{"name":"회현역"}],"name":"우모촌"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"신천동","station":[{"name":"잠실나루역"}],"name":"봉평소바"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"상수동","station":[{"name":"홍대입구역"}],"name":"겐로쿠 우동"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"송파동","station":[{"name":"잠실역"}],"name":"멘야 하나비"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"방배동","station":[{"name":"내방역"}],"name":"묘오또"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"서교동","station":[{"name":"합정역"}],"name":"가츠시"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"논현동","station":[{"name":"강남구청역"}],"name":"하루엔소쿠"}
-{"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"누하동","station":[{"name":"경복궁원"}],"name":"노부"}
+{"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"누하동","station":[{"name":"경복궁역"}],"name":"노부"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"대치동","station":[{"name":"선릉역"},{"name":"한티역"}],"name":"마초야"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"역삼동","station":[{"name":"강남역"}],"name":"기리야마 본진"}
 {"category":[{"name":"메밀국수"},{"name":"소바"}],"town":"명동","station":[{"name":"을지로입구역"}],"name":"장수분식"}
@@ -1072,7 +1072,7 @@
 {"category":[{"name":"치킨"}],"town":"반포동","station":[{"name":"반포역"}],"name":"반포치킨"}
 {"category":[{"name":"치킨"}],"town":"양재동","station":[{"name":"양재역"}],"name":"양재닭집"}
 {"category":[{"name":"치킨"}],"town":"신사동","station":[{"name":"압구정역"}],"name":"한잔의추억(한추)"}
-{"category":[{"name":"치킨"}],"town":"청담동","station":[{"name":"청담동"}],"name":"잔비워"}
+{"category":[{"name":"치킨"}],"town":"청담동","station":[{"name":"청담역"}],"name":"잔비워"}
 {"category":[{"name":"치킨"}],"town":"청담동","station":[{"name":"청담역"}],"name":"새로나호프"}
 {"category":[{"name":"치킨"}],"town":"당주동","station":[{"name":"광화문역"}],"name":"거성호프"}
 {"category":[{"name":"치킨"}],"town":"상계동","station":[{"name":"노원역"}],"name":"월드호프"}
@@ -1105,7 +1105,7 @@
 {"category":[{"name":"치킨"}],"town":"동선동","station":[{"name":"성신여대입구역"}],"name":"조아숯불바베큐"}
 {"category":[{"name":"치킨"}],"town":"사당동","station":[{"name":"사당역"}],"name":"참나무장작숯불구이"}
 {"category":[{"name":"치킨"}],"town":"노량진동","station":[{"name":"노량진역"}],"name":"참나라한방톨닭바베큐"}
-{"category":[{"name":"치킨"}],"town":"면목동","station":[{"name":"면목여"}],"name":"한방숯불바베큐"}
+{"category":[{"name":"치킨"}],"town":"면목동","station":[{"name":"면목역"}],"name":"한방숯불바베큐"}
 {"category":[{"name":"치킨"}],"town":"도림동","station":[{"name":"심도림역"}],"name":"참나무숯불통닭"}
 {"category":[{"name":"치킨"}],"town":"석촌동","station":[{"name":"석촌역"}],"name":"계봉박두 찹쌀누룽지통닭"}
 {"category":[{"name":"치킨"}],"town":"당산동","station":[{"name":"영등포구청역"}],"name":"참나라숯불바베큐"}
@@ -1203,7 +1203,7 @@
 {"category":[{"name":"함박 스테이크"}],"town":"상수동","station":[{"name":"상수역"}],"name":"The 450"}
 {"category":[{"name":"함박 스테이크"}],"town":"서교동","station":[{"name":"합정역"}],"name":"구슬함박"}
 {"category":[{"name":"함박 스테이크"}],"town":"망원동","station":[{"name":"망원역"}],"name":"맛양값"}
-{"category":[{"name":"함박 스테이크"}],"town":"한남동","station":[{"name":"한강진역역"}],"name":"윤세영식당"}
+{"category":[{"name":"함박 스테이크"}],"town":"한남동","station":[{"name":"한강진역"}],"name":"윤세영식당"}
 {"category":[{"name":"함박 스테이크"}],"town":"이태원","station":[{"name":"녹사평역"}],"name":"오지상함박스테이크"}
 {"category":[{"name":"함박 스테이크"}],"town":"이태원","station":[{"name":"녹사평역"}],"name":"마루쿠식당"}
 {"category":[{"name":"함박 스테이크"}],"town":"성북동","station":[{"name":"한성대역"}],"name":"꿀맛식당"}
@@ -1599,7 +1599,7 @@
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"동교동","station":[{"name":"홍대입구역"}],"name":"G.L.T 젤라또"}
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"연희동","station":[{"name":"홍대입구역"}],"name":"콜드레시피"}
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"망원동","station":[{"name":"망원역"}],"name":"빙하의별"}
-{"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"대현동","station":[{"name":"이대"}],"name":"블랙번즈"}
+{"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"대현동","station":[{"name":"이대역"}],"name":"블랙번즈"}
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"이태원동","station":[{"name":"이태원역"}],"name":"세컨스쿱젤라또"}
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"이태원동","station":[{"name":"이태원역"}],"name":"주카스젤라또"}
 {"category":[{"name":"아이스크림"},{"name":"젤라또"}],"town":"이태원동","station":[{"name":"녹사평역"}],"name":"밀크공방"}
@@ -1714,7 +1714,7 @@
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"관훈동","station":[{"name":"안국역"}],"name":"누리"}
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"여의도동","station":[{"name":"국회의사당역"}],"name":"이꾸"}
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"여의도동","station":[{"name":"국회의사당역"}],"name":"메트로싱글즈"}
-{"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"여의도도","station":[{"name":"여의도력"}],"name":"햇살도시락"}
+{"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"여의도도","station":[{"name":"여의도역"}],"name":"햇살도시락"}
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"여의도동","station":[{"name":"여의나루역"}],"name":"조PD키친"}
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"내수동","station":[{"name":"광화문역"}],"name":"테이엔"}
 {"category":[{"name":"덮밥"},{"name":"백반"},{"name":"벤또"},{"name":"도시락"}],"town":"대조동","station":[{"name":"불광역"}],"name":"벤또사마"}
@@ -1778,7 +1778,7 @@
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"이촌동","station":[{"name":"동부이촌동역"}],"name":"바베큐큐브"}
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"오금동","station":[{"name":"방이역"}],"name":"슻불직화바베큐"}
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"여의도동","station":[{"name":"여의도역"}],"name":"다미"}
-{"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"여의도동","station":[{"name":"여의도력"}],"name":"대원"}
+{"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"여의도동","station":[{"name":"여의도역"}],"name":"대원"}
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"다동","station":[{"name":"을지로입구역"}],"name":"도리방"}
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"신사동","station":[{"name":"압구정역"}],"name":"길손"}
 {"category":[{"name":"꼬치구이"},{"name":"로바다야끼"}],"town":"신사동","station":[{"name":"압구정역"}],"name":"아라도"}
@@ -2453,7 +2453,7 @@
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"상암동","station":[{"name":"디지털미디어시티역"}],"name":"예쁜돼지"}
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"가산동","station":[{"name":"가산디지털단지역"}],"name":"상상돼지"}
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"장안동","station":[{"name":"장안평역"}],"name":"진미육가"}
-{"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"신천역","station":[{"name":"잠실동"}],"name":"불타는 삼겹살"}
+{"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"신천역","station":[{"name":"잠실역"}],"name":"불타는 삼겹살"}
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"신사동","station":[{"name":"압구정로데오역"}],"name":"우돈청"}
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"명동","station":[{"name":"명동역"}],"name":"육통령"}
 {"category":[{"name":"돼지고기"},{"name":"기타"}],"town":"창동","station":[{"name":"창동역"}],"name":"덩어리"}
@@ -2673,7 +2673,7 @@
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"상수동","station":[{"name":"상수역"}],"name":"타베타이"}
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"상수동","station":[{"name":"상수역"}],"name":"카오산로드"}
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"상수동","station":[{"name":"상수역"}],"name":"쏘이313"}
-{"category":[{"name":"아시아"},{"name":"태국"}],"town":"대현동","station":[{"name":"이태역"}],"name":"방콕익스프레스"}
+{"category":[{"name":"아시아"},{"name":"태국"}],"town":"대현동","station":[{"name":"이태원역"}],"name":"방콕익스프레스"}
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"계동","station":[{"name":"안국역"}],"name":"화양연화"}
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"재동","station":[{"name":"안국역"}],"name":"반타이"}
 {"category":[{"name":"아시아"},{"name":"태국"}],"town":"수하동","station":[{"name":"을지로입구역"}],"name":"아한타이"}
@@ -2915,7 +2915,7 @@
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"명동","station":[{"name":"명동역"}],"name":"솔라리아 호텔 라운지"}
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"소공동","station":[{"name":"시청역"}],"name":"엘세븐 호텔 플로팅 라운지 L7"}
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"후암동","station":[{"name":"숙대입구역"}],"name":"오리올"}
-{"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"원효로 1가","station":[{"name":"남영동"}],"name":"백룸"}
+{"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"원효로 1가","station":[{"name":"남영역"}],"name":"백룸"}
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"공덕동","station":[{"name":"공덕역"}],"name":"발린치"}
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"공덕동","station":[{"name":"공덕역"}],"name":"팩토리 엠"}
 {"category":[{"name":"술"},{"name":"몰트 위스키"}],"town":"염리동","station":[{"name":"마포역"}],"name":"바 빈"}
@@ -3587,7 +3587,7 @@
 {"category":[{"name":"중국집"},{"name":"기타 야채요리"}],"town":"서교동","station":[{"name":"망원역"}],"name":"진진","note":"카이란 소고기 볶음"}
 {"category":[{"name":"중국집"},{"name":"기타 야채요리"}],"town":"여의도동","station":[{"name":"샛강역"}],"name":"백리향","note":"모듬 버섯 청채 볶음"}
 {"category":[{"name":"중국집"},{"name":"기타 야채요리"}],"town":"장충동","station":[{"name":"동대입구역"}],"name":"팔선"}
-{"category":[{"name":"중국집"},{"name":"광동요리"},{"name":"해산물요리"}],"town":"장충동","station":[{"name":"신라호텔"}],"name":"팔선"}
+{"category":[{"name":"중국집"},{"name":"광동요리"},{"name":"해산물요리"}],"town":"장충동","station":[{"name":"동대입구역"}],"name":"팔선","note":"신라호텔"}
 {"category":[{"name":"중국집"},{"name":"광동요리"},{"name":"해산물요리"}],"town":"역삼동","station":[{"name":"신논현역"}],"name":"취홍"}
 {"category":[{"name":"중국집"},{"name":"광동요리"},{"name":"해산물요리"}],"town":"태평로","station":[{"name":"시청역"}],"name":"도원"}
 {"category":[{"name":"중국집"},{"name":"광동요리"},{"name":"해산물요리"}],"town":"신사동","station":[{"name":"신사역"}],"name":"채운"}
@@ -3773,7 +3773,7 @@
 {"category":[{"name":"만두"},{"name":"한국식"}],"town":"삼전동","station":[{"name":"신천역"}],"name":"수제비명가"}
 {"category":[{"name":"만두"},{"name":"한국식"}],"town":"석촌동","station":[{"name":"석촌역"}],"name":"망가만두"}
 {"category":[{"name":"만두"},{"name":"한국식"}],"town":"송파동","station":[{"name":"송파역"}],"name":"원산만두"}
-{"category":[{"name":"만두"},{"name":"한국식"}],"town":"신천","station":[{"name":"잠실동"}],"name":"파오파오"}
+{"category":[{"name":"만두"},{"name":"한국식"}],"town":"신천","station":[{"name":"잠실역"}],"name":"파오파오"}
 {"category":[{"name":"한식"},{"name":"수제비"}],"town":"을지로3가","station":[{"name":"을지로3가역"}],"name":"을지수제비"}
 {"category":[{"name":"한식"},{"name":"수제비"}],"town":"인사동","station":[{"name":"종각역"}],"name":"얼큰한 조벡이 수제비"}
 {"category":[{"name":"한식"},{"name":"수제비"}],"town":"삼청동","station":[{"name":"안국역"}],"name":"삼청동수제비"}
