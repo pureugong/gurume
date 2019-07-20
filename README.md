@@ -7,6 +7,7 @@
   - [elastic cloud (optional)](#elastic-cloud-optional)
   - [Backend - elasticsearch client (golang)](#Backend---elasticsearch-client-golang)
   - [Frontend - (vue)](#Frontend---vue)
+    - [TODO](#TODO-1)
 
 # gurume ETL README
 
@@ -160,4 +161,9 @@ docker push {aws-ecr-host}/{ecr-repo-name}:{version}
 ```
 
 ## Frontend - (vue)
-- TBU
+
+### TODO
+- [ ] S3 bucket
+- [ ] routing
+- [ ] build pipeline
+- [ ] autocomplete tag
