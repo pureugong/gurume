@@ -25,7 +25,7 @@ func NewGurume() *Gurume {
 func (g *Gurume) SetCategory(categoryName string) *Gurume {
 	for _, c := range strings.Split(categoryName, ",") {
 		c = strings.TrimSpace(c)
-		if c != "N/A" && c != "" {
+		if c != "N/A" && !strings.Contains(c, "ref:") && c != "" {
 			g.Category = append(g.Category, Category{c})
 		}
 	}
