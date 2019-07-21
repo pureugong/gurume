@@ -16,8 +16,11 @@ services:
       - LOG_LEVEL=${LOG_LEVEL}
     volumes:
       - ./data:/tmp/data
+    ports:
+      - 3000:3000
     networks:
       - gurumenet
+    command: ["api"]
 # elasticsearch cluster
   elasticsearch:
     build: ./elasticsearch

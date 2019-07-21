@@ -7,6 +7,7 @@
   - [elastic cloud (optional)](#elastic-cloud-optional)
   - [Backend - elasticsearch client (golang)](#Backend---elasticsearch-client-golang)
   - [Frontend - (vue)](#Frontend---vue)
+    - [TODO](#TODO-1)
 
 # gurume ETL README
 
@@ -112,12 +113,12 @@ curl localhost:9200/gurume_index/_mapping | jq
 curl \
  -H 'Content-Type: application/json'\
  -X POST 'localhost:9200/gurume_index/gurume/_search'\
- --data '{ "from": 0, "size": 30, "query" : { "match" : { "category" : "닭곰탕" } }}' | jq '.hits.hits[]._source.category'
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "category.name" : "닭곰탕" } }}' | jq '.hits.hits[]._source.category'
 
 curl \
  -H 'Content-Type: application/json'\
  -X POST 'localhost:9200/gurume_index/gurume/_search'\
- --data '{ "from": 0, "size": 30, "query" : { "match" : { "station" : "을지로 4가역" } }}' | jq '.hits.hits[]._source.station'
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "station.name" : "을지로 4가역" } }}' | jq '.hits.hits[]._source.station'
 
 ```
 
@@ -160,4 +161,9 @@ docker push {aws-ecr-host}/{ecr-repo-name}:{version}
 ```
 
 ## Frontend - (vue)
-- TBU
+
+### TODO
+- [ ] S3 bucket
+- [ ] routing
+- [ ] build pipeline
+- [ ] autocomplete tag
