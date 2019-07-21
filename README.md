@@ -113,12 +113,12 @@ curl localhost:9200/gurume_index/_mapping | jq
 curl \
  -H 'Content-Type: application/json'\
  -X POST 'localhost:9200/gurume_index/gurume/_search'\
- --data '{ "from": 0, "size": 30, "query" : { "match" : { "category" : "닭곰탕" } }}' | jq '.hits.hits[]._source.category'
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "category.name" : "닭곰탕" } }}' | jq '.hits.hits[]._source.category'
 
 curl \
  -H 'Content-Type: application/json'\
  -X POST 'localhost:9200/gurume_index/gurume/_search'\
- --data '{ "from": 0, "size": 30, "query" : { "match" : { "station" : "을지로 4가역" } }}' | jq '.hits.hits[]._source.station'
+ --data '{ "from": 0, "size": 30, "query" : { "match" : { "station.name" : "을지로 4가역" } }}' | jq '.hits.hits[]._source.station'
 
 ```
 
